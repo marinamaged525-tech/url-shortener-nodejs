@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+        <h1>SnapLink</h1>
+        <p>Shorten your messy URLs in seconds.</p>
+    </header>
+
+    <form action="/shorten" method="POST" class="input-section">
+        <input type="url" name="longUrl" placeholder="Paste your long link here..." required>
+        <button type="submit">Shorten</button>
+    </form>
+
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Original</th>
+                <th>Short Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% urls.forEach(url => { %>
+                <tr>
+                    <td><span class="long-url"><%= url.longUrl %></span></td>
+                    <td><a href="/<%= url.shortUrl %>" class="short-link" target="_blank">/<%= url.shortUrl %></a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
